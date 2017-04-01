@@ -26,4 +26,14 @@ public function simpan()
 	$jadwal_matakuliah->save();
 	return "Data Jadwal Matakuliah telah disimpan";
 }
+public function jadwalku() {
+    $jadwal = jadwal_matakuliah::all();  //untuk menampilkan semua data 
+    foreach ($jadwal as $arul) {  //panggilnya pakai foreach
+    echo "Nama Mahasiswa :" .$arul->mahasiswa->nama;
+    echo "<br>";
+    echo "ID Dosen :" .$arul->dosen_matakuliah_id;
+    echo "<br>";
+    echo " Berada Di Kelas :" .$arul->ruangan->title;
+}
+}
 }

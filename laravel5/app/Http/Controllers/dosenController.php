@@ -28,4 +28,16 @@ public function simpan()
 	$dosen->save();
 	return "data dengan nama {$dosen->nama} telah disimpan";
 }
+public function ket_dosen() {
+	$keterangan = dosen::all();  //untuk menampilkan semua data 
+	foreach ($keterangan as $ket) {  //panggilnya pakai foreach
+	echo "Nama :" .$ket->nama;
+	echo "<br>";
+	echo "NIP :" .$ket->nip;
+	echo "<br>";
+	echo "Alamat :" .$ket->alamat;
+	echo "<br>";
+	echo "Di buat oleh :" .$ket->pengguna->username; 
+	echo "<p>";} 
+	}
 }
