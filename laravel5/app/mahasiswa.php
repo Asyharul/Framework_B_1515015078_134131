@@ -15,4 +15,12 @@ class mahasiswa extends Model
 {
 	return  $this->hasMany(Jadwal_matakuliah::class); //one to Many dari Mahasiswa (one) ke Jadwal matakuliah (many)
 }
+public function listMahasiswaDanNim()
+{
+	$out = [];
+	foreach ($this->all() as $mhs) {
+		$out[$mhs->id] = "{$mhs->nama} ({$mhs->nim})";
+	}
+	return $out;
+}	
 }
