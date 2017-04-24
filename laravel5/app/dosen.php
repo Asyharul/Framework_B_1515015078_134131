@@ -4,22 +4,26 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class dosen extends Model
+class Dosen extends Model
 {
-    protected $table = 'dosen';  
-
-    protected $guarded = ['id'];  
-
-    public function pengguna(){ 
-   	return $this->belongsTo(Pengguna::class); 
+    protected $table = 'Dosen';
+    protected $guarded = ['id'];
+    protected $fillable = ['nama','nip','alamat','pengguna_id'];
+    public function pengguna()
+    {
+    	return $this->belongsTo(Pengguna::class); //Terelasi dengan model pengguna
     }
-   
-   public function dosen_matakuliah(){  
+    public function dosen_matakuliah()
+    {
+    	return $this->hasMany(dosen_matakuliah::class); //Berelasi pada Model dosen_matakuliah
+    }
 
-   return $this->hasMany(Dosen_matakuliah::class);  
-   }
+    public function getUsernameAttribute(){
+        return $this->pengguna->username;
+    }
 
-   public function listDosenDanNip(){
+    public function listDosenDanNip()
+    {
         $out = [];
         foreach ($this->all() as $dsn) {
             $out[$dsn->id] = "{$dsn->nama} ({$dsn->nip})";
@@ -27,12 +31,3 @@ class dosen extends Model
     return $out;
     }
 }
-    /*protected $table = 'dosen';
-    protected $fillable = ['nama','nip','alamat','pengguna_id'];
-public function pengguna(){
-    return $this->belongsTo(Pengguna::class);
-}
-public function dosen_matakuliah(){
-	return $this->hasMany(dosen_matakuliah::class);
-}
-}*/

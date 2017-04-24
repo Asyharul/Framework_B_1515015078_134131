@@ -2,7 +2,7 @@
 @section('container')
 <div class="panel panel-info">
 	<div class="panel-heading">
-		<strong><a href="{{url('pengguna')}}"><i class="fa text-default fa-chevron-left"></i></a> Perbarui data pengguna</strong>
+		<strong><a href="{{url('Pengguna')}}"><i class="fa text-default fa-chevron-left"></i></a> Perbarui data pengguna</strong>
 	</div>
 	{!! Form::model($pengguna,['url'=>'pengguna/edit/'.$pengguna->id,'class'=>'form-horizontal']) !!}
 		@include('pengguna.form')

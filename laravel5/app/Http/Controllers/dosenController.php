@@ -5,12 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\dosen;
-use App\pengguna;
+use App\Dosen;
+use App\Pengguna;
 
-class dosenController extends Controller
+class DosenController extends Controller
 {
-	protected $informasi = 'Gagal melakukan aksi';
+    protected $informasi = 'Gagal melakukan aksi';
 
     public function awal()
     {
@@ -28,7 +28,7 @@ class dosenController extends Controller
      public function simpan(Request $input)
     {
 
-    $pengguna = new pengguna($input->only('username','password'));
+    $pengguna = new Pengguna($input->only('username','password'));
 
     if ($pengguna->save()) {
     $dosen = new Dosen;
@@ -88,38 +88,37 @@ class dosenController extends Controller
         }
             return redirect('dosen')-> with(['informasi'=>$this->informasi]);
         
-    }  
-    
-}
-    /*public function awal()
-    {
-    	return "Hello dari DosenController";
     }
-    public function tambah()
-    {
-    	return $this->simpan();
-    
+    //  public function awal(){
+    // 	return "Hello dari DosenController";
+    // }
+    // public function tambah(){
+    // 	return $this->simpan();
+    // }
+    // public function simpan(){
+    // 	$dosen = new Dosen();
+    // 	$dosen->nama = "Andre Prasetya Rahman";
+    // 	$dosen->nip = "1515015080";
+    // 	$dosen->alamat = "Perjuangan 07";
+    // 	$dosen->pengguna_id = 3;
+    // 	$dosen->save();
+    // 	return "Data Dosen dengan Nama {$dosen->nama} telah disimpan";
+    // }
+
+    //     public function Dosen()
+    //     {
+    //     $mahasiswa = dosen::all(); //variable mahasiswa sebagai menampung semua data dari tabel dosen
+    //     foreach ($mahasiswa as $mhs) { //foreach untuk menampilkan semua data yang ada dari tabel dosen
+    //     echo "Nama: ".$mhs->nama;
+    //     echo "<br>";
+    //     echo "NIP: ".$mhs->nip;
+    //     echo "<br>";
+    //     echo "Alamat: ".$mhs->alamat;
+    //     echo "<br>";
+    //     echo "Dibuat Oleh: ".$mhs->pengguna->username; //Menampilkan data dari tabel pengguna yang telah terelasi dengan dosen
+    //     echo "<br>";
+    //     echo "<br>";
+    //     }
+
+    // }
 }
-public function simpan()
-{
-	$dosen = new dosen();
-	$dosen->nama = 'Muhammad Asyharul';
-	$dosen->nip = '001';
-	$dosen->alamat = 'perjuangan 3';
-	$dosen->pengguna_id = '001';
-	$dosen->save();
-	return "data dengan nama {$dosen->nama} telah disimpan";
-}
-public function ket_dosen() {
-	$keterangan = dosen::all();  //untuk menampilkan semua data 
-	foreach ($keterangan as $ket) {  //panggilnya pakai foreach
-	echo "Nama :" .$ket->nama;
-	echo "<br>";
-	echo "NIP :" .$ket->nip;
-	echo "<br>";
-	echo "Alamat :" .$ket->alamat;
-	echo "<br>";
-	echo "Di buat oleh :" .$ket->pengguna->username; 
-	echo "<p>";} 
-	}
-}*/
